@@ -26,6 +26,7 @@ class hook:
                 del self.hooks[i]
                 break
 
+# example of use for future me
 hook = hook()
 
 def ourFunc():
