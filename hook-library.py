@@ -25,3 +25,15 @@ class hook:
             if values[0] == hookID and values[1] == uniqueID:
                 del self.hooks[i]
                 break
+
+hook = hook()
+
+def ourFunc():
+    print("Called the think hook")
+hook.Add("Think", "ourThinkHook", ourFunc)
+
+while True:
+    hook.Run("Think")
+    timer.sleep(0.1)
+
+# hook.Remove("Think", "ourThinkHook")
