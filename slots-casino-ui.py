@@ -25,8 +25,7 @@ class slots:
     def getWinnings(self, array):
         count = 0
         for number in array:
-            if number == 0:
-                count = count + 1
+            if number == 0: count = count + 1
         if count == 3:
             return 5
         elif count > 1:
@@ -63,19 +62,42 @@ class slots:
         return 0
 
 Balance = 10
+CanUse = True
 slots = slots()
 
 window = tk.Tk()
 window.title("Casino")
 
-def spin():
+def updateSpin(int, num):
     global Balance
+    global CanUse
+    if int == 10:
+        CanUse = True
+        resultLabel.config(text = "Winnings: £" + str(slots.getWinnings(num)))
+        Balance = Balance + slots.getWinnings(num)
+        balLabel.config(text = "Balance: £" + str(Balance))
+        return
+
+    num = slots.spin()
+    spinLabel.config(text = slots.toEmojies(num))
+    window.after(50, lambda: updateSpin(int + 1, num))
+
+def spin():
+    global CanUse
+    if not CanUse:
+        return
+
+    global Balance
+    if Balance - 1 < 0:
+        balLabel.config(text = "Ran out of cash!")
+        return
+
+    CanUse = False
     Balance = Balance - 1
     balLabel.config(text = "Balance: £" + str(Balance))
 
     num = slots.spin()
-    spinLabel.config(text = slots.toEmojies(num))
-    resultLabel.config(text = "Winnings: £" + str(slots.getWinnings(num)))
+    updateSpin(0, 0)
 
 balLabel = tk.Label(window, text = "Balance: £" + str(Balance))
 balLabel.grid(row = 0, column = 0)
