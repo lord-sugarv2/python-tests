@@ -125,6 +125,14 @@ balanceLabel = vgui.CreateLabel("Balance: £" + str(Balance))
 emojiLabel = vgui.CreateLabel("[ ## ## ## ]")
 emojiLabel.configure(font=("Arial", 20))
 
+resultLabels = vgui.CreateLabel(text = """\U0001F355 \U0001F355 \U0001F355: £1.5
+\U0001F354 \U0001F354 \U0001F354: £10
+\U0001F32E \U0001F32E \U0001F32E: £40
+\U0001F32F \U0001F32F \U0001F32F: £160
+\U0001F363 \U0001F363 \U0001F363: £1000""")
+resultLabels.configure(font=("Arial", 10))
+resultLabels.grid(pady = 5, padx = 5, row=1, column=2)
+
 button = vgui.CreateButton("SPIN", SpinClicked)
 
 vgui.Finalize(window)
