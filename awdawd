@@ -2786,9 +2786,9 @@ function KV.OpenMenu(bInit)
 
     local reset = false
 
-    if KV.BAIT_LIMIT ~= KV.GetStored("baitthreshold", 5) then
+    if KV.BAIT_LIMIT ~= KV.GetStored("baitthreshold", 500) then
         reset = true
-        KV.BAIT_LIMIT = KV.GetStored("baitthreshold", 5)
+        KV.BAIT_LIMIT = KV.GetStored("baitthreshold", 500)
     end
 
     local det_call = KV.DetourCall or false
@@ -3692,7 +3692,7 @@ KV.AddExploit("Showcase", {
     },
 })
 
-KV.BAIT_LIMIT = KV.GetStored("baitthreshold", 5)
+KV.BAIT_LIMIT = KV.GetStored("baitthreshold", 500)
 
 --////////////////////////////////////////////- MONEY -////////////////////////////////////////////////
 KV.AddExploit("Printer Money Stealer", {
